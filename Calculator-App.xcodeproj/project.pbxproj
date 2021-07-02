@@ -13,8 +13,6 @@
 		E55A3516268F6F6D007F77C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55A3514268F6F6D007F77C5 /* Main.storyboard */; };
 		E55A3518268F6F70007F77C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55A3517268F6F70007F77C5 /* Assets.xcassets */; };
 		E55A351B268F6F70007F77C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55A3519268F6F70007F77C5 /* LaunchScreen.storyboard */; };
-		E55A3526268F6F70007F77C5 /* Calculator_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55A3525268F6F70007F77C5 /* Calculator_AppTests.swift */; };
-		E55A3531268F6F70007F77C5 /* Calculator_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55A3530268F6F70007F77C5 /* Calculator_AppUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +42,7 @@
 		E55A351A268F6F70007F77C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E55A351C268F6F70007F77C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55A3521268F6F70007F77C5 /* Calculator-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E55A3525268F6F70007F77C5 /* Calculator_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_AppTests.swift; sourceTree = "<group>"; };
-		E55A3527268F6F70007F77C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E55A352C268F6F70007F77C5 /* Calculator-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E55A3530268F6F70007F77C5 /* Calculator_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_AppUITests.swift; sourceTree = "<group>"; };
-		E55A3532268F6F70007F77C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				E55A350D268F6F6D007F77C5 /* Calculator-App */,
-				E55A3524268F6F70007F77C5 /* Calculator-AppTests */,
-				E55A352F268F6F70007F77C5 /* Calculator-AppUITests */,
 				E55A350C268F6F6D007F77C5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,24 +100,6 @@
 				E55A351C268F6F70007F77C5 /* Info.plist */,
 			);
 			path = "Calculator-App";
-			sourceTree = "<group>";
-		};
-		E55A3524268F6F70007F77C5 /* Calculator-AppTests */ = {
-			isa = PBXGroup;
-			children = (
-				E55A3525268F6F70007F77C5 /* Calculator_AppTests.swift */,
-				E55A3527268F6F70007F77C5 /* Info.plist */,
-			);
-			path = "Calculator-AppTests";
-			sourceTree = "<group>";
-		};
-		E55A352F268F6F70007F77C5 /* Calculator-AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E55A3530268F6F70007F77C5 /* Calculator_AppUITests.swift */,
-				E55A3532268F6F70007F77C5 /* Info.plist */,
-			);
-			path = "Calculator-AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +242,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E55A3526268F6F70007F77C5 /* Calculator_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E55A3531268F6F70007F77C5 /* Calculator_AppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
