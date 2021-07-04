@@ -7,30 +7,15 @@
 
 import UIKit
 
-enum Signs {
-    case ac, changeSign, procent, divide, multiply, decrease, increase, point, equal;
-}
-
-var Numbers: Array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 class ViewController: UIViewController {
 
     var sum = "0";
-    
     var currentSign = "";
-    
-    func changeSignOfTheCalculus (sign: Signs) {
-//        switch sign {
-//        case sign === "-:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-    }
-    
-    func addNumberToSum (number: Int) {
-        sum = sum + String(number);
-        resultsLabel.text = sum;
+
+    func removeUnusedPoint () {
+        if (sum.last == ".") {
+            sum.remove(at: sum.index(before: sum.endIndex));
+        }
     }
     
     override func viewDidLoad() {
@@ -50,13 +35,70 @@ class ViewController: UIViewController {
         resultsLabel.text = sum;
     }
     
-    @IBAction func acButton(_ sender: Any) {
+    @IBAction func pointButton(_ sender: Any) {
+        if (sum.contains(".")) {
+            return;
+        }
+        
+        sum = sum + ".";
+        resultsLabel.text = sum;
     }
     
-    @IBAction func changeSignButton(_ sender: Any) {
+    @IBAction func showActiveOperation (_ button: UIButton) {
+        removeUnusedPoint();
+
+        currentSign = button.currentTitle!;
+
+        //        if (currentSign == button.currentTitle) {
+        //            button.backgroundColor = #colorLiteral(red: 1, green: 0.8352941275, blue: 0.6000000238, alpha: 1);
+        //
+        //            // restore the color to the other button
+        //        }
+    }
+    
+    @IBAction func acButton(_ button: UIButton) {
+        sum = "0";
+        resultsLabel.text = sum;
+    }
+    
+    @IBAction func changeSignButton(_ button: UIButton) {
+        if (sum.first == "-") {
+            sum.removeFirst();
+        } else {
+            sum = "-" + sum;
+        }
+        
+        resultsLabel.text = sum;
     }
 
-    @IBAction func procentButton(_ sender: Any) {
+    @IBAction func procentButton(_ button: UIButton) {
+        if (sum == "0") {
+            return;
+        }
+
+        removeUnusedPoint();
+
+        let firstPoint = sum.firstIndex(of: ".");
+
+        if (firstPoint != nil) {
+            // get the number before the '.'
+            let firstPartOfSum = sum[..<firstPoint!];
+
+            // get the number after the '.'
+            let range = sum.index(after: firstPoint!)..<sum.endIndex;
+
+            if (Int(firstPartOfSum)! < 10) {
+                // i do not save the fractionalNumber directly to the sum in order to be converted
+                // to a easier number in float format. ex: 0.00004567 -> 4.567e-05
+                let fractionalNumber = "0" + "." + "0" + firstPartOfSum + sum[range];
+                sum = String(Float(fractionalNumber)!);
+            } else {
+                sum = String(Int(firstPartOfSum)! / 100) + "." + String(Int(firstPartOfSum)! % 100) + sum[range];
+            }
+        } else {
+            sum = String(Float(sum)! / 100);
+        }
+        resultsLabel.text = sum;
     }
     
     @IBAction func divideButton(_ sender: Any) {
@@ -69,9 +111,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func increaseButton(_ sender: Any) {
-    }
-    
-    @IBAction func pointButton(_ sender: Any) {
     }
     
     @IBAction func equalButton(_ sender: Any) {
