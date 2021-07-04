@@ -83,7 +83,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="divideButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sYt-AY-bCd"/>
-                                                    <action selector="showActiveOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rpY-aJ-R5k"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -133,7 +132,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="multiplyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sju-Af-zRn"/>
-                                                    <action selector="showActiveOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r3g-fu-aSO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -183,7 +181,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="decreaseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gUX-XE-XgN"/>
-                                                    <action selector="showActiveOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CnC-2w-zVn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -233,7 +230,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="increaseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W0n-oB-XDQ"/>
-                                                    <action selector="showActiveOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RYO-l4-XM0"/>
                                                 </connections>
                                             </button>
                                         </subviews>

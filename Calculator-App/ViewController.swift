@@ -7,15 +7,59 @@
 
 import UIKit
 
+enum Signs {
+    case increase, decrease, multiply, divide
+}
+
 class ViewController: UIViewController {
 
     var sum = "0";
-    var currentSign = "";
+    var newNumber = "0";
+    var currentSign: Signs? = nil;
 
     func removeUnusedPoint () {
         if (sum.last == ".") {
             sum.remove(at: sum.index(before: sum.endIndex));
         }
+    }
+    
+    func addNumber (newSum: String, number: String) -> String {
+        var currentSum: String? = nil;
+        
+        if (newSum == "0") {
+            currentSum = number;
+        } else {
+            currentSum = newSum + number;
+        }
+
+        resultsLabel.text = currentSum;
+        return currentSum!;
+    }
+    
+    func calculation (sign: Signs?) {
+        var finalResult: Float = 0;
+
+        switch currentSign {
+        case .increase:
+            finalResult = Float(sum)! + Float(newNumber)!;
+            sum = String(finalResult);
+        case .decrease:
+            finalResult = Float(sum)! - Float(newNumber)!;
+            sum = String(finalResult);
+        case .multiply:
+            finalResult = Float(sum)! * (Float(newNumber) ?? 1);
+            sum = String(finalResult);
+        case .divide:
+            finalResult = Float(sum)! / (Float(newNumber) ?? 1);
+            sum = String(finalResult);
+        default:
+            sum = "0";
+        }
+        
+        newNumber = "0";
+        currentSign = sign ?? nil;
+
+        resultsLabel.text = sum;
     }
     
     override func viewDidLoad() {
@@ -27,12 +71,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultsLabel: UILabel!
     
     @IBAction func numberButton (_ button: UIButton) {
-        if (sum == "0") {
-            sum = button.currentTitle!;
-        } else {
-            sum = sum + button.currentTitle!;
+        let num = button.currentTitle!;
+
+        if (currentSign != nil) {
+            newNumber = addNumber(newSum: newNumber, number: num);
+            return;
         }
-        resultsLabel.text = sum;
+
+        sum = addNumber(newSum: sum, number: num);
     }
     
     @IBAction func pointButton(_ sender: Any) {
@@ -42,18 +88,6 @@ class ViewController: UIViewController {
         
         sum = sum + ".";
         resultsLabel.text = sum;
-    }
-    
-    @IBAction func showActiveOperation (_ button: UIButton) {
-        removeUnusedPoint();
-
-        currentSign = button.currentTitle!;
-
-        //        if (currentSign == button.currentTitle) {
-        //            button.backgroundColor = #colorLiteral(red: 1, green: 0.8352941275, blue: 0.6000000238, alpha: 1);
-        //
-        //            // restore the color to the other button
-        //        }
     }
     
     @IBAction func acButton(_ button: UIButton) {
@@ -102,18 +136,40 @@ class ViewController: UIViewController {
     }
     
     @IBAction func divideButton(_ sender: Any) {
+        removeUnusedPoint();
+        if (currentSign != nil) {
+            calculation(sign: currentSign);
+        }
+        currentSign = Signs.divide;
+        
     }
     
     @IBAction func multiplyButton(_ sender: Any) {
+        removeUnusedPoint();
+        if (currentSign != nil) {
+            calculation(sign: currentSign);
+        }
+        currentSign = Signs.multiply;
     }
     
     @IBAction func decreaseButton(_ sender: Any) {
+        removeUnusedPoint();
+        if (currentSign != nil) {
+            calculation(sign: currentSign);
+        }
+        currentSign = Signs.decrease;
     }
     
-    @IBAction func increaseButton(_ sender: Any) {
+    @IBAction func increaseButton(_ button: UIButton) {
+        removeUnusedPoint();
+        if (currentSign != nil) {
+            calculation(sign: currentSign);
+        }
+        currentSign = Signs.increase;
     }
     
     @IBAction func equalButton(_ sender: Any) {
+        calculation(sign: nil);
     }
 }
 
