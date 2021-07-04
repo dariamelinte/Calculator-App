@@ -14,7 +14,7 @@ enum Signs {
 class ViewController: UIViewController {
 
     var sum = "0";
-    var newNumber = "0";
+    var newNumber: String? = nil;
     var currentSign: Signs? = nil;
 
     func removeUnusedPoint () {
@@ -23,13 +23,13 @@ class ViewController: UIViewController {
         }
     }
     
-    func addNumber (newSum: String, number: String) -> String {
+    func addNumber (newSum: String?, number: String) -> String {
         var currentSum: String? = nil;
         
-        if (newSum == "0") {
+        if (newSum == nil || newSum == "0") {
             currentSum = number;
         } else {
-            currentSum = newSum + number;
+            currentSum = newSum! + number;
         }
 
         resultsLabel.text = currentSum;
@@ -38,25 +38,29 @@ class ViewController: UIViewController {
     
     func calculation (sign: Signs?) {
         var finalResult: Float = 0;
+        
+        if (newNumber == nil) {
+            return;
+        }
 
         switch currentSign {
         case .increase:
-            finalResult = Float(sum)! + Float(newNumber)!;
+            finalResult = Float(sum)! + Float(newNumber ?? "0")!;
             sum = String(finalResult);
         case .decrease:
-            finalResult = Float(sum)! - Float(newNumber)!;
+            finalResult = Float(sum)! - Float(newNumber ?? "0")!;
             sum = String(finalResult);
         case .multiply:
-            finalResult = Float(sum)! * (Float(newNumber) ?? 1);
+            finalResult = Float(sum)! * Float(newNumber ?? "1")!;
             sum = String(finalResult);
         case .divide:
-            finalResult = Float(sum)! / (Float(newNumber) ?? 1);
+            finalResult = Float(sum)! / Float(newNumber ?? "1")!;
             sum = String(finalResult);
         default:
             sum = "0";
         }
         
-        newNumber = "0";
+        newNumber = nil;
         currentSign = sign ?? nil;
 
         resultsLabel.text = sum;
